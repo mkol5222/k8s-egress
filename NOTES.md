@@ -57,6 +57,10 @@ k run client --image=nginx -it --rm --restart=Never --env https_proxy=http://squ
 #   and certificate issue CN=Forward Proxy
 # because HTTPS inspection is happeing by the proxy
 
+# we are lookig for custom header X-Own-Forwarded-For, 
+# because httpbin.org does not display X-Forwarded-For header
+# that is also added and sent to the server
+
 # remove
 k -n squid delete pod squid
 k -n squid delete svc squid
