@@ -65,4 +65,8 @@ k run client --image=nginx -it --rm --restart=Never --env https_proxy=http://squ
 k -n squid delete pod squid
 k -n squid delete svc squid
 k delete ns squid
+
+
+# remove multipass vm
+multipass delete -p node1
 ```
