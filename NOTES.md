@@ -47,6 +47,10 @@ k describe svc squid -n squid
 # try connect via squid proxy
 k run client --image=nginx -it --rm --restart=Never -- curl --proxy http://squid.squid.svc.cluster.local:3128 -k -vvv https://httpbin.org/headers
 
+# proxy env variables
+k run client --image=nginx -it --rm --restart=Never --env https_proxy=http://squid.squid.svc.cluster.local:3128 -- curl  -k -vvv https://httpbin.org/headers
+
+
 # output should contain
 #     "X-Own-Forwarded-For": "10.1.166.139"
 # which is real IP of the client Pod
